@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Growth Conference - Secure Your Ticket</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .form-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #dc2626;
+        }
+
+        .content-section h2 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .content-section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .content-section ul {
+            margin-left: 20px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            background: white;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .required-field {
+            color: #e74c3c;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            display: none;
+            padding: 20px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #c3e6cb;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @media (max-width: 968px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="video-section">
+            <div class="video-wrapper">
+                <iframe 
+                    id="youtube-video"
+                    src="https://www.youtube.com/embed/QBO5ZeWrEt8?autoplay=1&loop=1&playlist=QBO5ZeWrEt8&mute=1&controls=1&modestbranding=1&rel=0"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h1>Business Growth Conference</h1>
+            <p class="subtitle">Scale Faster, Grow Smarter, Lead Stronger</p>
+            
+            <div class="content-section">
+                <h2>Join the Game-Changing Masterclass</h2>
+                <p>Learn proven strategies from <span class="highlight">Dr. Stephen Akintayo</span> and industry experts to:</p>
+                <ul>
+                    <li>Scale your revenue and streamline operations</li>
+                    <li>Master sales funnel strategies and customer acquisition</li>
+                    <li>Access business financing and investment opportunities</li>
+                    <li>Build a high-performance team and leadership skills</li>
+                    <li>Implement automation and AI-driven systems</li>
+                </ul>
+                <p><strong>Conference Dates:</strong><br>
+                
+                Abuja: February 28 - March 1, 2026 <br>
+                Lagos: March 14-15, 2026 </p>
+
+            </div>
+            
+            <form id="funnel-form">
+                <div class="form-group">
+                    <label for="name">Full Name <span class="required-field">*</span></label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required-field">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required-field">*</span></label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                </div>
+
+                <div class="form-group">
+                    <label for="ticket-type">Ticket Type <span class="required-field">*</span></label>
+                    <select id="ticket-type" name="ticket-type" required>
+                        <option value="">Select ticket type</option>
+                        <option value="regular">Regular Access - ₦250,000</option>
+                        <option value="vip">Executive Access (VIP) - ₦500,000</option>
+                        <option value="virtual">Virtual Access - ₦150,000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location <span class="required-field">*</span></label>
+                    <select id="location" name="location" required>
+                        <option value="">Select location</option>
+                        <option value="abuja">Abuja (Feb 28 - Mar 1, 2026)</option>
+                        <option value="lagos">Lagos (Mar 14-15, 2026)</option>
+                        <option value="virtual">Virtual (Online)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">Secure Your Ticket</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('funnel-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Log form data (you can send this to your backend/email service)
+            console.log('Form submitted:', data);
+            
+            // Optional: Send data to analytics or tracking pixel
+            // Example: gtag('event', 'form_submit', { 'event_category': 'engagement' });
+            
+            // Redirect to main conference page
+            window.location.href = 'https://businessgrowthconference.org/nigeria';
+        });
+
+        // Sync location with ticket type for virtual tickets
+        document.getElementById('ticket-type').addEventListener('change', function() {
+            const ticketType = this.value;
+            const locationSelect = document.getElementById('location');
+            
+            if (ticketType === 'virtual') {
+                locationSelect.value = 'virtual';
+                locationSelect.disabled = true;
+            } else {
+                locationSelect.disabled = false;
+                if (locationSelect.value === 'virtual') {
+                    locationSelect.value = '';
+                }
+            }
+        });
+
+        // Sync ticket type with location for virtual location
+        document.getElementById('location').addEventListener('change', function() {
+            const location = this.value;
+            const ticketSelect = document.getElementById('ticket-type');
+            
+            if (location === 'virtual') {
+                ticketSelect.value = 'virtual';
+                ticketSelect.disabled = true;
+            } else {
+                ticketSelect.disabled = false;
+                if (ticketSelect.value === 'virtual') {
+                    ticketSelect.value = '';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
