@@ -286,6 +286,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="whatsapp">WhatsApp Number <span class="required-field">*</span></label>
+                    <input type="tel" id="whatsapp" name="whatsapp" required placeholder="Enter your WhatsApp number">
+                </div>
+
+                <div class="form-group">
                     <label for="ticket-type">Ticket Type <span class="required-field">*</span></label>
                     <select id="ticket-type" name="ticket-type" required>
                         <option value="">Select ticket type</option>
@@ -295,12 +300,21 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="location-group">
                     <label for="location">Location <span class="required-field">*</span></label>
                     <select id="location" name="location" required>
                         <option value="">Select location</option>
                         <option value="abuja">Abuja (Feb 28 - Mar 1, 2026)</option>
                         <option value="lagos">Lagos (Mar 14-15, 2026)</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="virtual-location-group" style="display: none;">
+                    <label for="virtual-location">Virtual Ticket Location <span class="required-field">*</span></label>
+                    <select id="virtual-location" name="virtual-location">
+                        <option value="">Select virtual ticket location</option>
+                        <option value="abuja">Abuja</option>
+                        <option value="lagos">Lagos</option>
                     </select>
                 </div>
 
@@ -359,35 +373,30 @@
             }
         });
 
-        // Sync location with ticket type for virtual tickets
+        // Handle ticket type changes - show/hide location fields
         document.getElementById('ticket-type').addEventListener('change', function() {
             const ticketType = this.value;
+            const locationGroup = document.getElementById('location-group');
+            const virtualLocationGroup = document.getElementById('virtual-location-group');
             const locationSelect = document.getElementById('location');
+            const virtualLocationSelect = document.getElementById('virtual-location');
             
             if (ticketType === 'virtual') {
-                locationSelect.value = 'virtual';
-                locationSelect.disabled = true;
+                // Hide regular location, show virtual location
+                locationGroup.style.display = 'none';
+                locationSelect.removeAttribute('required');
+                locationSelect.value = '';
+                
+                virtualLocationGroup.style.display = 'block';
+                virtualLocationSelect.setAttribute('required', 'required');
             } else {
-                locationSelect.disabled = false;
-                if (locationSelect.value === 'virtual') {
-                    locationSelect.value = '';
-                }
-            }
-        });
-
-        // Sync ticket type with location for virtual location
-        document.getElementById('location').addEventListener('change', function() {
-            const location = this.value;
-            const ticketSelect = document.getElementById('ticket-type');
-            
-            if (location === 'virtual') {
-                ticketSelect.value = 'virtual';
-                ticketSelect.disabled = true;
-            } else {
-                ticketSelect.disabled = false;
-                if (ticketSelect.value === 'virtual') {
-                    ticketSelect.value = '';
-                }
+                // Show regular location, hide virtual location
+                locationGroup.style.display = 'block';
+                locationSelect.setAttribute('required', 'required');
+                
+                virtualLocationGroup.style.display = 'none';
+                virtualLocationSelect.removeAttribute('required');
+                virtualLocationSelect.value = '';
             }
         });
     </script>
